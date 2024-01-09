@@ -1,0 +1,167 @@
+import java.util.*;
+import java.util.Random;
+import java.util.Arrays;
+
+public class Main
+{
+    public static void min()
+    // zu 1) Minimum einer Liste ausgeben
+    {
+        Random zufall = new Random();
+        String[] zufallszahlen = {Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt())};
+
+        Arrays.sort(zufallszahlen);
+
+        System.out.println("Die kleinste Zahl der Liste ist " + zufallszahlen[0]);
+    }
+
+    public static void max()
+    // zu 1) Maximum einer Liste ausgeben
+    {
+        Random zufall = new Random();
+        String[] zufallszahlen = {Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt()), Integer.toString(zufall.nextInt())};
+
+        Arrays.sort(zufallszahlen);
+
+        System.out.println("Die größte Zahl der Liste ist " + zufallszahlen[zufallszahlen.length -1]);
+    }
+
+    public static void notendurschnitt()
+    //zu 2) Durschnitt der vom Nutzer eingebenen Noten (oder Notenpunkte) berechnen
+    {
+        System.out.println("Willkommen zum Notendurchschnittsrechner!");
+        System.out.println("");
+        System.out.println("Bitte gib deine Note ein und drücke dann Enter.");
+        System.out.println("Wiederhole dies, bis du alle Noten übergeben hast.");
+        System.out.println("Wenn du fertig bist, drücke erneut Enter.");
+
+        ArrayList<Float> notenliste = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        boolean notenEingabe = true;
+        int i = 0;
+        float notensumme = 0;
+        while (notenEingabe)
+        {
+            String eingabe = scanner.nextLine();
+            if (eingabe == "")
+            {
+                notenEingabe = false;
+            }
+            else
+            {
+                notenliste.add(i, Float.parseFloat(eingabe));
+                i++;
+            }
+        }
+
+        i= i-1;
+        for (int x=-1; x!=i;)
+        {
+            notensumme = notensumme + notenliste.get(i);
+            i--;
+        }
+
+        float durchschnitt;
+
+        durchschnitt = notensumme/notenliste.size();
+
+        System.out.println("Dein Notendurchschnitt beträgt rund " + durchschnitt);
+    }
+
+    public static void inListe()
+    //zu 3) Vorhandensein einer Zahl in Liste übergebener Zahlen prüfen
+    {
+        System.out.println("Bitte gib deine Zahl ein und drücke dann Enter.");
+        System.out.println("Wiederhole dies, bis du alle Zahlen übergeben hast.");
+        System.out.println("Wenn du fertig bist, drücke erneut Enter.");
+
+        ArrayList<Float> liste = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        boolean listenEingabe = true;
+        int i = 0;
+        while (listenEingabe)
+        {
+            String eingabe = scanner.nextLine();
+            if (eingabe == "")
+            {
+                listenEingabe = false;
+            }
+            else
+            {
+                liste.add(i, Float.parseFloat(eingabe));
+                i++;
+            }
+        }
+        System.out.println("Gib nun die Zahl ein, deren Vorhandensein du in der Liste überprüfen möchtest.");
+
+        float gesuchteZahl = Float.parseFloat(scanner.nextLine());
+        boolean zahlEnthalten = false;
+        i = i-1;
+        for (int x=-1; x!=i;)
+        {
+            if (liste.get(i) == gesuchteZahl)
+            {
+                zahlEnthalten = true;
+                break;
+            }
+            else
+            {
+                i--;
+            }
+        }
+
+        if (zahlEnthalten == true)
+        {
+            System.out.println("Die Zahl " + gesuchteZahl + " ist in der Liste enthalten.");
+        }
+        else
+        {
+            System.out.println("Die Zahl " + gesuchteZahl + " ist nicht in der Liste enthalten.");
+        }
+    }
+
+    public static void anzahl()
+    //zu 4) Anzahl einer Zahl in Liste übergebener Zahlen prüfen
+    {
+        System.out.println("Bitte gib deine Zahl ein und drücke dann Enter.");
+        System.out.println("Wiederhole dies, bis du alle Zahlen übergeben hast.");
+        System.out.println("Wenn du fertig bist, drücke erneut Enter.");
+
+        ArrayList<Float> liste = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        boolean listenEingabe = true;
+        int i = 0;
+        while (listenEingabe)
+        {
+            String eingabe = scanner.nextLine();
+            if (eingabe == "")
+            {
+                listenEingabe = false;
+            }
+            else
+            {
+                liste.add(i, Float.parseFloat(eingabe));
+                i++;
+            }
+        }
+        System.out.println("Gib nun die Zahl ein, deren Anzahl du in der Liste überprüfen möchtest.");
+
+        float gesuchteZahl = Float.parseFloat(scanner.nextLine());
+        i = i-1;
+        int anzahl=0;
+        for (int x=-1; x!=i;)
+        {
+            if (liste.get(i) == gesuchteZahl)
+            {
+                anzahl++;
+                i--;
+            }
+            else
+            {
+                i--;
+            }
+        }
+
+        System.out.println("Die Zahl " + gesuchteZahl + " ist " + anzahl + " mal der Liste enthalten.");        
+    }
+} 
